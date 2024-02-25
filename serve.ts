@@ -7,13 +7,13 @@ export default function serve() {
   const app = express();
   app.use(cors());
 
-  app.get('/apps', async (req, res) => {
+  app.get("/apps", async (req, res) => {
     const glob = new Glob("*.js");
     const scannedFiles = await Array.fromAsync(
       glob.scan({ cwd: "./public/dist/apps" })
     );
     res.json(scannedFiles);
-  })
+  });
   app.use(express.static("public"));
   app.listen(1930, () =>
     console.log("Listening on port 1930, now open Pluview on a Pluto instance")
@@ -29,7 +29,11 @@ const iconSrc = await fetch("https://pluto-app.zeon.dev/assets/icons.js").then(
 );
 
 function cleanseJs(string: string) {
-  return string.replace(";", "").replace("export default", "").trim();
+  return string
+    .replace(";", "")
+    .replace(/`/g, "'")
+    .replace("export default", "")
+    .trim();
 }
 
 const stringsSanitized = cleanseJs(stringSrc);

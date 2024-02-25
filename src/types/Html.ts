@@ -12,7 +12,7 @@ export interface Html {
   cleanup: () => Html;
   query: (selector: string) => Html;
   queryHtml: (selector: string) => Html;
-  class: (...val: string[]) => Html;
+  class: (...val: (string | undefined | null)[]) => Html;
   classOn: (...val: string[]) => Html;
   classOff: (...val: string[]) => Html;
   style: (obj: Record<string, string>) => Html;
@@ -21,7 +21,12 @@ export interface Html {
   un: (ev: string, cb: EventListenerOrEventListenerObject) => Html;
   appendTo: (parent: Html | HTMLElement | string) => Html;
   append: (elem: Html | HTMLElement) => Html;
-  appendMany: (...elements: (Html | HTMLElement)[]) => Html;
+  appendMany: (...elements: (Html | HTMLElement | undefined)[]) => Html;
+  prependTo: (parent: Html | HTMLElement | string) => Html;
+  prepend: (elem: Html | HTMLElement) => Html;
+  prependMany: (...elements: (Html | HTMLElement | undefined)[]) => Html;
+  qs: (target: string) => Html;
+  qsa: (target: string) => Html[] | null;
   clear: () => Html;
   attr: (obj: Record<string, string | undefined>) => Html;
   val: (str: string) => Html;

@@ -11,6 +11,6 @@ export async function compile(
   await Bun.build({
     entrypoints: [filePath],
     outdir: outputDir,
-    minify: true,
+    minify: false,
   });
 }

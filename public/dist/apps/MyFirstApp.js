@@ -1,3 +1,4 @@
+/* Compiled from MyFirstApp.ts with Pluto-TS-DevEnv 0.1.0 */
 var k={name:"TypeScript Example",description:"The first ever typed app in Pluto!",ver:1.5,type:"process",async exec(f){let u=new f.Lib.html("div"),s;console.log("Hello from example package",f.Lib),f.Lib.setOnEnd(()=>s.close());const j=(await f.Lib.loadLibrary("WindowSystem")).win,l=await f.Lib.loadComponent("Sidebar");s=new j({title:"TypeScript Example",content:"",onclose:()=>{f.Lib.onEnd()}});let D=s.window.querySelector(".win-content");if(D!==null)u=f.Lib.html.from(D);return new f.Lib.html("h1").text("TypeScript Example App 2024").appendTo(u),new f.Lib.html("p").html("The first ever typed app in Pluto!").appendTo(u),new f.Lib.html("button").text("Hello, world").appendTo(u).on("click",(h)=>{const c=h;f.Modal.alert(`Hello!
 Cursor Position: ${c.clientX}, ${c.clientY}
 My PID: ${f.PID}
