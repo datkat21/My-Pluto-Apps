@@ -1,5 +1,47 @@
-/* Compiled from MyFirstApp.ts with Pluto-TS-DevEnv 0.1.0 */
-var k={name:"TypeScript Example",description:"The first ever typed app in Pluto!",ver:1.5,type:"process",async exec(f){let u=new f.Lib.html("div"),s;console.log("Hello from example package",f.Lib),f.Lib.setOnEnd(()=>s.close());const j=(await f.Lib.loadLibrary("WindowSystem")).win,l=await f.Lib.loadComponent("Sidebar");s=new j({title:"TypeScript Example",content:"",onclose:()=>{f.Lib.onEnd()}});let D=s.window.querySelector(".win-content");if(D!==null)u=f.Lib.html.from(D);return new f.Lib.html("h1").text("TypeScript Example App 2024").appendTo(u),new f.Lib.html("p").html("The first ever typed app in Pluto!").appendTo(u),new f.Lib.html("button").text("Hello, world").appendTo(u).on("click",(h)=>{const c=h;f.Modal.alert(`Hello!
-Cursor Position: ${c.clientX}, ${c.clientY}
-My PID: ${f.PID}
-My Token: ${f.Token}`)}),new f.Lib.html("button").text("Spawn another").appendTo(u).on("click",(h)=>{f.Lib.launch("apps:Example",u)}),new f.Lib.html("button").text("End Process").appendTo(u).on("click",(h)=>{f.Lib.onEnd()}),f.Lib.setupReturns((h)=>{console.log("Example received message: "+h)})}},x=k;export{x as default};
+// src/apps/MyFirstApp.ts
+var pkg = {
+  name: "TypeScript Example",
+  description: "The first ever typed app in Pluto!",
+  ver: 1.5,
+  type: "process",
+  async exec(Root) {
+    let wrapper = new Root.Lib.html("div");
+    let MyWindow;
+    console.log("Hello from example package", Root.Lib);
+    Root.Lib.setOnEnd(() => MyWindow.close());
+    const Win = (await Root.Lib.loadLibrary("WindowSystem")).win;
+    const Sidebar = await Root.Lib.loadComponent("Sidebar");
+    MyWindow = new Win({
+      title: "TypeScript Example",
+      content: "",
+      onclose: () => {
+        Root.Lib.onEnd();
+      }
+    });
+    let wrapTemp = MyWindow.window.querySelector(".win-content");
+    if (wrapTemp !== null)
+      wrapper = Root.Lib.html.from(wrapTemp);
+    new Root.Lib.html("h1").text("TypeScript Example App 2024").appendTo(wrapper);
+    new Root.Lib.html("p").html("The first ever typed app in Pluto!").appendTo(wrapper);
+    new Root.Lib.html("button").text("Hello, world").appendTo(wrapper).on("click", (e) => {
+      const ev = e;
+      Root.Modal.alert(`Hello!
+Cursor Position: ${ev.clientX}, ${ev.clientY}
+My PID: ${Root.PID}
+My Token: ${Root.Token}`);
+    });
+    new Root.Lib.html("button").text("Spawn another").appendTo(wrapper).on("click", (e) => {
+      Root.Lib.launch("apps:Example", wrapper);
+    });
+    new Root.Lib.html("button").text("End Process").appendTo(wrapper).on("click", (e) => {
+      Root.Lib.onEnd();
+    });
+    return Root.Lib.setupReturns((m) => {
+      console.log("Example received message: " + m);
+    });
+  }
+};
+var MyFirstApp_default = pkg;
+export {
+  MyFirstApp_default as default
+};

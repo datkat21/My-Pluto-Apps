@@ -4,8 +4,8 @@ export interface WindowSystem {
 
 export interface WsWindowOptions {
   id?: string;
-  width?: number;
-  height?: number;
+  width?: string|number;
+  height?: string|number;
   minWidth?: number;
   minHeight?: number;
   title?: string;

@@ -177,5 +177,5 @@ out
 # bun
 public/dist/apps/**
 !public/dist/apps/MyFirstApp.js
-src/apps/**
-!src/apps/MyFirstApp.ts
+# src/apps/**
+# !src/apps/MyFirstApp.ts

@@ -1,3 +1,5 @@
+import { BuildOutput } from "bun";
+
 /**
  * Builds a ts file to a directory
  * @param filePath The file path
@@ -7,8 +9,8 @@
 export async function compile(
   filePath: string,
   outputDir: string
-): Promise<void> {
-  await Bun.build({
+): Promise<BuildOutput> {
+  return await Bun.build({
     entrypoints: [filePath],
     outdir: outputDir,
     minify: false,
